@@ -5,130 +5,195 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>معرض البرحة الفاخر للسيارات</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap');
+        
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Tajawal', sans-serif;
         }
+        
         body {
-            background-color: #0b0f19;
+            background-color: #050b14;
             color: #ffffff;
             line-height: 1.6;
         }
+
+        /* رأس الصفحة الفاخر */
         header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            padding: 30px 20px;
+            background: linear-gradient(rgba(5, 11, 20, 0.9), rgba(5, 11, 20, 0.9)), url('https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 80px 20px;
             text-align: center;
-            border-bottom: 3px solid #3b82f6;
+            border-bottom: 4px solid #d4af37; /* لون ذهبي فخم */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
+        
         header h1 {
-            font-size: 2.2rem;
-            color: #60a5fa;
-            margin-bottom: 5px;
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            font-weight: 800;
         }
+        
         header p {
-            color: #94a3b8;
-            font-size: 1rem;
+            color: #e2e8f0;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
+
         .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 15px;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
         }
-        .car-card {
-            background: #1e293b;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            overflow: hidden;
-            border: 1px solid #334155;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #ffffff;
+            margin-bottom: 40px;
+            position: relative;
         }
-        .car-header {
-            background: #334155;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #d4af37;
+            margin: 10px auto 0;
+            border-radius: 2px;
         }
-        .car-header h2 {
-            font-size: 1.5rem;
-            color: #f8fafc;
-        }
-        .car-price {
-            background: #3b82f6;
-            color: white;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        .car-body {
-            padding: 20px;
+
+        /* شبكة السيارات */
+        .cars-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
         }
-        @media (max-width: 768px) {
-            .car-body {
-                grid-template-columns: 1fr;
-            }
+
+        /* بطاقة السيارة الاحترافية */
+        .car-card {
+            background: #0f172a;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #1e293b;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
-        .car-image img {
-            width: 100%;
+
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+            border-color: #d4af37;
+        }
+
+        .car-image-wrapper {
+            position: relative;
             height: 250px;
+            overflow: hidden;
+        }
+
+        .car-image-wrapper img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .car-card:hover .car-image-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .price-tag {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(212, 175, 55, 0.95);
+            color: #000;
+            padding: 8px 15px;
             border-radius: 8px;
-            border: 1px solid #475569;
+            font-weight: bold;
+            font-size: 1.2rem;
+            backdrop-filter: blur(5px);
         }
-        .car-specs h3 {
-            color: #60a5fa;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 5px;
+
+        .car-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
-        .car-specs ul {
+
+        .car-title {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .car-specs {
             list-style: none;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            flex-grow: 1;
         }
+
         .car-specs li {
             color: #cbd5e1;
-            font-size: 0.95rem;
-            margin-bottom: 6px;
+            font-size: 1rem;
+            padding: 8px 0;
+            border-bottom: 1px solid #1e293b;
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px dashed #1e293b;
-            padding-bottom: 4px;
         }
+
         .car-specs li span {
             color: #94a3b8;
+            font-weight: bold;
         }
+
+        /* زر الواتساب الاحترافي */
         .whatsapp-btn {
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
             width: 100%;
-            background: #25d366;
-            color: white;
-            text-align: center;
-            padding: 12px;
+            background: #25D366;
+            color: #ffffff;
+            padding: 15px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1rem;
-            transition: background 0.3s;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
+
         .whatsapp-btn:hover {
-            background: #22bf5b;
+            background: #1ebc5b;
+            transform: scale(1.02);
         }
+
+        .whatsapp-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
+            background: #080f1c;
             color: #64748b;
-            background: #0f172a;
             border-top: 1px solid #1e293b;
-            margin-top: 40px;
+            margin-top: 60px;
+            font-size: 1rem;
         }
     </style>
 </head>
@@ -136,84 +201,83 @@
 
     <header>
         <h1>معرض البرحة الفاخر للسيارات</h1>
-        <p>فرع صنعاء - المعرض الرسمي المباشر</p>
+        <p>نخبة السيارات الفاخرة والنادرة بمواصفات دقيقة وأسعار لا تقبل المنافسة - فرع صنعاء</p>
     </header>
 
     <div class="container">
-
-        <!-- سيارة 1: تويوتا كامري -->
-        <div class="car-card">
-            <div class="car-header">
-                <h2>تويوتا كامري 2020 XSE</h2>
-                <div class="car-price">$ 20,000</div>
-            </div>
-            <div class="car-body">
-                <div class="car-image">
-                    <img src="camry.jpg" alt="تويوتا كامري">
+        <h2 class="section-title">السيارات المتاحة لمعاينة كبار الشخصيات</h2>
+        
+        <div class="cars-grid">
+            
+            <!-- تويوتا كامري -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <!-- لاحظ تم تعديل الاسم إلى camry.jpg.jpg ليطابق الخطأ في الويندوز لديك وتعمل الصورة 100% -->
+                    <img src="camry.jpg.jpg" alt="تويوتا كامري 2020">
+                    <div class="price-tag">$ 20,000</div>
                 </div>
-                <div class="car-specs">
-                    <h3>المواصفات الأساسية:</h3>
-                    <ul>
+                <div class="car-content">
+                    <h3 class="car-title">تويوتا كامري 2020 XSE</h3>
+                    <ul class="car-specs">
                         <li><span>المحرك:</span> بنزين 4 سلندر</li>
-                        <li><span>الفئة:</span> XSE سبورت</li>
-                        <li><span>المميزات:</span> بانوراما، رادار، كراسي جلد، بصمة، شاشة لمس</li>
+                        <li><span>الفئة:</span> XSE سبورت الرياضية</li>
                         <li><span>الحالة:</span> فل كامل بترول بحالة الوكالة</li>
+                        <li><span>الإضافات:</span> بانوراما، رادار، كراسي جلد، بصمة</li>
                     </ul>
-                    <a href="https://wa.me/967776495689?text=السلام%20عليكم،%20أنا%20مهتم%20بشراء%20تويوتا%20كامري%202020%20XSE" class="whatsapp-btn" target="_blank">تواصل عبر واتساب لشراء السيارة</a>
+                    <a href="https://wa.me/967772577781?text=السلام%20عليكم،%20أنا%20مهتم%20بشراء%20تويوتا%20كامري%202020%20XSE%20المعروضة%20في%20الموقع" class="whatsapp-btn" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        تواصل للحجز والمعاينة
+                    </a>
                 </div>
             </div>
-        </div>
 
-        <!-- سيارة 2: تويوتا رافور -->
-        <div class="car-card">
-            <div class="car-header">
-                <h2>تويوتا رافور 2021 XLE Hybrid</h2>
-                <div class="car-price">$ 18,600</div>
-            </div>
-            <div class="car-body">
-                <div class="car-image">
-                    <img src="rav4.jpg" alt="تويوتا رافور">
+            <!-- تويوتا رافور -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <img src="rav4.jpg.jpg" alt="تويوتا رافور 2021">
+                    <div class="price-tag">$ 18,600</div>
                 </div>
-                <div class="car-specs">
-                    <h3>المواصفات الأساسية:</h3>
-                    <ul>
+                <div class="car-content">
+                    <h3 class="car-title">تويوتا رافور 2021 XLE Hybrid</h3>
+                    <ul class="car-specs">
                         <li><span>المحرك:</span> هايبرد وبترول 2.5 لتر</li>
-                        <li><span>اللون:</span> رصاصي سلفر</li>
-                        <li><span>العداد:</span> 60 ألف ميل</li>
-                        <li><span>الدفع:</span> رباعي (دبل)</li>
-                        <li><span>المميزات:</span> بصمة، فتحة سقف، رادار، كراسي مخمل</li>
+                        <li><span>اللون والعداد:</span> رصاصي سلفر - 60 ألف ميل</li>
+                        <li><span>نظام الدفع:</span> دفع رباعي (دبل)</li>
+                        <li><span>الإضافات:</span> بصمة، فتحة سقف، رادار، كراسي مخمل</li>
                     </ul>
-                    <a href="https://wa.me/967776495689?text=السلام%20عليكم،%20أنا%20مهتم%20بشراء%20تويوتا%20رافور%202021" class="whatsapp-btn" target="_blank">تواصل عبر واتساب لشراء السيارة</a>
+                    <a href="https://wa.me/967772577781?text=السلام%20عليكم،%20أنا%20مهتم%20بشراء%20تويوتا%20رافور%202021%20المعروضة%20في%20الموقع" class="whatsapp-btn" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        تواصل للحجز والمعاينة
+                    </a>
                 </div>
             </div>
-        </div>
 
-        <!-- سيارة 3: الجيب الفاخر -->
-        <div class="car-card">
-            <div class="car-header">
-                <h2>جيب فاخر حصري</h2>
-                <div class="car-price">130,000 ريال سعودي</div>
-            </div>
-            <div class="car-body">
-                <div class="car-image">
-                    <img src="jeep.jpg" alt="جيب فاخر">
+            <!-- الجيب الفاخر -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <img src="jeep.jpg.jpg" alt="جيب فاخر">
+                    <div class="price-tag">130,000 ر.س</div>
                 </div>
-                <div class="car-specs">
-                    <h3>المواصفات الأساسية:</h3>
-                    <ul>
+                <div class="car-content">
+                    <h3 class="car-title">جيب فاخر V.I.P</h3>
+                    <ul class="car-specs">
                         <li><span>الفئة:</span> دفع رباعي ثقيل وخاص</li>
-                        <li><span>الحالة:</span> أداء عالي وفخامة مطلقة</li>
-                        <li><span>المعاينة:</span> جاهز للفحص والمعاينة الفورية</li>
+                        <li><span>الأداء:</span> أداء عالي وفخامة مطلقة</li>
+                        <li><span>الحالة:</span> بحالة الوكالة ومضمون</li>
+                        <li><span>المعاينة:</span> جاهز للفحص الفوري بالمعرض</li>
                     </ul>
-                    <a href="https://wa.me/967776495689?text=السلام%20عليكم،%20أنا%20مهتم%20بشراء%20الجيب%20الفاخر" class="whatsapp-btn" target="_blank">تواصل عبر واتساب لشراء السيارة</a>
+                    <a href="https://wa.me/967772577781?text=السلام%20عليكم،%20أنا%20مهتم%20بشراء%20الجيب%20الفاخر%20المعروض%20في%20الموقع" class="whatsapp-btn" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        تواصل للحجز والمعاينة
+                    </a>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
 
     <footer>
-        <p>جميع الحقوق محفوظة © 2026 - معرض البرحة للسيارات</p>
+        <p>جميع الحقوق محفوظة © 2026 - معرض البرحة للسيارات (سناع) | دقة، ثقة، وفخامة</p>
     </footer>
 
 </body>
