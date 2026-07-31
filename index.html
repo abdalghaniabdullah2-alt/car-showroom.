@@ -3,462 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معرض البرحة الفاخر للسيارات - صنعاء</title>
-    <!-- خط عربي فاخر -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>معرض البرحة الفاخر للسيارات</title>
     <style>
-        :root {
-            --bg-primary: #0a0f1d;
-            --bg-card: #131b2e;
-            --accent: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.4);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --gold: #f59e0b;
-            --border: rgba(255, 255, 255, 0.08);
-        }
-
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-main);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* الهيدر الفاخر */
-        header {
-            background: linear-gradient(135deg, rgba(10, 15, 29, 0.95), rgba(19, 27, 46, 0.95));
-            border-bottom: 1px solid var(--border);
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--text-main);
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        /* قسم العرض الرئيسي البانورامي */
-        .hero {
-            padding: 60px 20px;
-            text-align: center;
-            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, #ffffff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* حاوية السيارات */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px 20px 80px 20px;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            border-right: 4px solid var(--accent);
-            padding-right: 15px;
-            font-weight: 700;
-        }
-
-        .cars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        /* بطاقة السيارة الفاخرة */
-        .car-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            position: box-shadow;
-        }
-
-        .car-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 30px var(--accent-glow);
-        }
-
-        .car-img-container {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-            background: #000;
-        }
-
-        .car-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .car-card:hover .car-img-container img {
-            transform: scale(1.08);
-        }
-
-        .price-tag {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(10, 15, 29, 0.85);
-            color: var(--gold);
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            backdrop-filter: blur(5px);
-        }
-
-        .car-details {
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-        }
-
-        .car-title {
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-
-        .car-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+            background-color: #0b0f19;
+            color: #ffffff;
             line-height: 1.6;
-            margin-bottom: 20px;
         }
-
-        .details-btn {
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            padding: 30px 20px;
             text-align: center;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            border-bottom: 3px solid #3b82f6;
         }
-
-        .car-card:hover .details-btn {
-            background: var(--accent);
-            box-shadow: 0 0 15px var(--accent-glow);
+        header h1 {
+            font-size: 2.2rem;
+            color: #60a5fa;
+            margin-bottom: 5px;
         }
-
-        /* نافذة التفاصيل المنبثقة (Modal) */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(5, 8, 15, 0.85);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            max-width: 700px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 35px;
-            position: relative;
-            animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes modalPop {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: #fff;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-
-        .close-modal:hover {
-            background: #ef4444;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 15px;
-        }
-
-        .modal-title {
-            font-size: 1.6rem;
-            color: #fff;
-            font-weight: 800;
-        }
-
-        .modal-price {
-            font-size: 1.4rem;
-            color: var(--gold);
-            font-weight: 700;
-        }
-
-        .specs-list {
-            list-style: none;
-            margin-top: 20px;
-        }
-
-        .specs-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-muted);
+        header p {
+            color: #94a3b8;
             font-size: 1rem;
         }
-
-        .specs-list li span {
-            color: #fff;
-            font-weight: 500;
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 15px;
         }
-
-        .modal-img {
-            width: 100%;
-            height: 300px;
+        .car-card {
+            background: #1e293b;
             border-radius: 12px;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 1px solid var(--border);
+            margin-bottom: 30px;
+            overflow: hidden;
+            border: 1px solid #334155;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-
+        .car-header {
+            background: #334155;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .car-header h2 {
+            font-size: 1.5rem;
+            color: #f8fafc;
+        }
+        .car-price {
+            background: #3b82f6;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .car-body {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .car-body {
+                grid-template-columns: 1fr;
+            }
+        }
+        .car-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #475569;
+        }
+        .car-specs h3 {
+            color: #60a5fa;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 5px;
+        }
+        .car-specs ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        .car-specs li {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #1e293b;
+            padding-bottom: 4px;
+        }
+        .car-specs li span {
+            color: #94a3b8;
+        }
+        .whatsapp-btn {
+            display: block;
+            width: 100%;
+            background: #25d366;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        .whatsapp-btn:hover {
+            background: #22bf5b;
+        }
         footer {
             text-align: center;
-            padding: 30px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .modal-content { padding: 20px; }
+            padding: 20px;
+            color: #64748b;
+            background: #0f172a;
+            border-top: 1px solid #1e293b;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">الـبـرحـة <span>للـسـيـارات</span></div>
-        <div style="color: var(--text-muted); font-size: 0.9rem;">صنعاء، اليمن</div>
+        <h1>معرض البرحة الفاخر للسيارات</h1>
+        <p>فرع صنعاء - المعرض الرسمي المباشر</p>
     </header>
 
-    <section class="hero">
-        <h1>نخبة السيارات الفاخرة والنادرة</h1>
-        <p>استعرض أحدث موديلات السيارات المطلوبة بعناية فائقة، مواصفات دقيقة وأسعار تنافسية مضمونة.</p>
-    </section>
-
     <div class="container">
-        <h2 class="section-title">السيارات المتاحة حالياً</h2>
-        
-        <div class="cars-grid">
-            
-            <!-- سيارة كامري -->
-            <div class="car-card" onclick="openModal('camryModal')">
-                <div class="car-img-container">
-                    <div class="price-tag">20,000 $</div>
-                    <img src="camry/camry.jpg" alt="تويوتا كامري">
+
+        <!-- سيارة 1: تويوتا كامري -->
+        <div class="car-card">
+            <div class="car-header">
+                <h2>تويوتا كامري 2020 XSE</h2>
+                <div class="car-price">$ 20,000</div>
+            </div>
+            <div class="car-body">
+                <div class="car-image">
+                    <img src="camry/IMG-20260729-9WA0033.jpg" alt="تويوتا كامري">
                 </div>
-                <div class="car-details">
-                    <h3 class="car-title">تويوتا كامري XSE 2020</h3>
-                    <p class="car-desc">فل الفل بترول، بانوراما، شاملة المواصفات بخمس كاميرات ورادارات متقدمة.</p>
-                    <div class="details-btn">عرض التفاصيل الكاملة</div>
+                <div class="car-specs">
+                    <h3>المواصفات الأساسية:</h3>
+                    <ul>
+                        <li><span>المحرك:</span> بنزين 4 سلندر</li>
+                        <li><span>الفئة:</span> XSE سبورت</li>
+                        <li><span>المميزات:</span> بانوراما، رادار، كراسي جلد، بصمة، شاشة لمس</li>
+                        <li><span>الحالة:</span> فل كامل بترول بحالة الوكالة</li>
+                    </ul>
+                    <a href="https://wa.me/967776495689?text=السلام%20عليكم،%20أنا%20مهتم%20بشراء%20تويوتا%20كامري%202020%20XSE" class="whatsapp-btn" target="_blank">تواصل عبر واتساب لشراء السيارة</a>
                 </div>
             </div>
-
-            <!-- سيارة رافور -->
-            <div class="car-card" onclick="openModal('rav4Modal')">
-                <div class="car-img-container">
-                    <div class="price-tag">18,600 $</div>
-                    <img src="rav4/rav4.jpg" alt="تويوتا رافور هايبرد">
-                </div>
-                <div class="car-details">
-                    <h3 class="car-title">تويوتا رافور XLE Hybrid 2021</h3>
-                    <p class="car-desc">عرطة ماتتكرر، هايبرد هجين، دبل دفع رباعي، زيرو وبحالة ممتازة جداً.</p>
-                    <div class="details-btn">عرض التفاصيل الكاملة</div>
-                </div>
-            </div>
-
-            <!-- سيارة الجيب -->
-            <div class="car-card" onclick="openModal('jeepModal')">
-                <div class="car-img-container">
-                    <div class="price-tag">130,000 ريال سعودي</div>
-                    <img src="jeep/jeep.jpg" alt="جيب فاخر">
-                </div>
-                <div class="car-details">
-                    <h3 class="car-title">جيب فاخر حصري</h3>
-                    <p class="car-desc">أداء عالي وفخامة مطلقة، جاهز للمعاينة بأدق التفاصيل والمواصفات الكاملة.</p>
-                    <div class="details-btn">عرض التفاصيل الكاملة</div>
-                </div>
-            </div>
-
         </div>
-    </div>
 
-    <!-- نافذة تفاصيل الكامري -->
-    <div id="camryModal" class="modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('camryModal')">&times;</button>
-            <div class="modal-header">
-                <div class="modal-title">تويوتا كامري XSE 2020</div>
-                <div class="modal-price">20,000 $</div>
+        <!-- سيارة 2: تويوتا رافور -->
+        <div class="car-card">
+            <div class="car-header">
+                <h2>تويوتا رافور 2021 XLE Hybrid</h2>
+                <div class="car-price">$ 18,600</div>
             </div>
-            <img src="camry/camry.jpg" class="modal-img" alt="كامري">
-            <p style="color: var(--text-muted); margin-bottom: 15px; font-weight: 600;">كامري 2020 فل الفل بترول XSE بانوراما، شاملة المواصفات خمس كيمرات، رادارات وكل شي فيها وسليم حرفياً بما في ذلك قوة النور والمحرك الفولاذي.</p>
-            <ul class="specs-list">
-                <li>الموديل: <span>2020 فل الفل XSE</span></li>
-                <li>نوع الوقود: <span>بترول</span></li>
-                <li>فتحة سقف: <span>بانوراما</span></li>
-                <li>الكاميرات: <span>5 كاميرات محيطية</span></li>
-                <li>الأنظمة: <span>رادارات كاملة ونقاط عمياء</span></li>
-                <li>الحالة: <span>سليم وخالي من أي ملاحظات</span></li>
-            </ul>
+            <div class="car-body">
+                <div class="car-image">
+                    <img src="rav4/IMG-20260729-8WA0004.jpg" alt="تويوتا رافور">
+                </div>
+                <div class="car-specs">
+                    <h3>المواصفات الأساسية:</h3>
+                    <ul>
+                        <li><span>المحرك:</span> هايبرد وبترول 2.5 لتر</li>
+                        <li><span>اللون:</span> رصاصي سلفر</li>
+                        <li><span>العداد:</span> 60 ألف ميل</li>
+                        <li><span>الدفع:</span> رباعي (دبل)</li>
+                        <li><span>المميزات:</span> بصمة، فتحة سقف، رادار، كراسي مخمل</li>
+                    </ul>
+                    <a href="https://wa.me/967776495689?text=السلام%20عليكم،%20أنا%20مهتم%20بشراء%20تويوتا%20رافور%202021" class="whatsapp-btn" target="_blank">تواصل عبر واتساب لشراء السيارة</a>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- نافذة تفاصيل الرافور -->
-    <div id="rav4Modal" class="modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('rav4Modal')">&times;</button>
-            <div class="modal-header">
-                <div class="modal-title">تويوتا رافور XLE - Hybrid 2021</div>
-                <div class="modal-price">18,600 $</div>
+        <!-- سيارة 3: الجيب الفاخر -->
+        <div class="car-card">
+            <div class="car-header">
+                <h2>جيب فاخر حصري</h2>
+                <div class="car-price">130,000 ريال سعودي</div>
             </div>
-            <img src="rav4/rav4.jpg" class="modal-img" alt="رافور">
-            <p style="color: var(--text-muted); margin-bottom: 15px; font-weight: 600;">عرطة ماتتكرر للبيع تويوتا رافور XLE - Hybrid هايبرد 2021 زيرو وسعر عرطة قوي جداً مضمون خلايا مضمون محركات.</p>
-            <ul class="specs-list">
-                <li>المحرك: <span>هايبرد وبترول هجين 4 بستون، سعة 2.5 لتر</span></li>
-                <li>اللون: <span>رصاصي سلفر</span></li>
-                <li>العداد: <span>60 ألف ميل</span></li>
-                <li>نظام الدفع: <span>دبل دفع رباعي</span></li>
-                <li>التشغيل والدخول: <span>بصمة</span></li>
-                <li>الكراسي: <span>مخمل مع ديكور ثلجي + حركة كهربائية</span></li>
-                <li>فتحة سقف: <span>متوفرة</span></li>
-                <li>الأمان والمساعدة: <span>حساسات خلفية، رادار أمامي، مانع انزلاق ABS / EBD</span></li>
-                <li>الشاشة والترفيه: <span>شاشة لمس مع BLUETOOTH & MP3، منافذ AUX & USB</span></li>
-                <li>إضافات: <span>نظام توفير الوقود ECO، مقود متعدد الأغراض، مراقبة ضغط الإطارات TPMS</span></li>
-                <li>الإضاءة: <span>أمامية زينون</span></li>
-            </ul>
+            <div class="car-body">
+                <div class="car-image">
+                    <img src="jeep/IMG-20260729-9WA0015.jpg" alt="جيب فاخر">
+                </div>
+                <div class="car-specs">
+                    <h3>المواصفات الأساسية:</h3>
+                    <ul>
+                        <li><span>الفئة:</span> دفع رباعي ثقيل وخاص</li>
+                        <li><span>الحالة:</span> أداء عالي وفخامة مطلقة</li>
+                        <li><span>المعاينة:</span> جاهز للفحص والمعاينة الفورية</li>
+                    </ul>
+                    <a href="https://wa.me/967776495689?text=السلام%20عليكم،%20أنا%20مهتم%20بشراء%20الجيب%20الفاخر" class="whatsapp-btn" target="_blank">تواصل عبر واتساب لشراء السيارة</a>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- نافذة تفاصيل الجيب -->
-    <div id="jeepModal" class="modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('jeepModal')">&times;</button>
-            <div class="modal-header">
-                <div class="modal-title">جيب فاخر متطور</div>
-                <div class="modal-price">130,000 ريال سعودي</div>
-            </div>
-            <img src="jeep/jeep.jpg" class="modal-img" alt="جيب">
-            <p style="color: var(--text-muted); margin-bottom: 15px; font-weight: 600;">مواصفات ملكية فائقة الجودة، جاهز للاستخدام بأعلى معايير الراحة والقوة على الطرقات الوعرة والممهدة.</p>
-            <ul class="specs-list">
-                <li>السعر: <span>130,000 ريال سعودي</span></li>
-                <li>الحالة: <span>وكالة نظيف جداً ومضمون</span></li>
-                <li>أنظمة القيادة: <span>دفع رباعي متعدد التضاريس</span></li>
-                <li>الراحة والفخامة: <span>مقاعد جلدية فاخرة، تقنيات قيادة حديثة</span></li>
-            </ul>
-        </div>
     </div>
 
     <footer>
-        <p>جميع الحقوق محفوظة &copy; 2026 - معرض البرحة للسيارات</p>
+        <p>جميع الحقوق محفوظة © 2026 - معرض البرحة للسيارات</p>
     </footer>
 
-    <script>
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // إغلاق النافذة عند النقر خارج الصندوق
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-    </script>
 </body>
 </html>
